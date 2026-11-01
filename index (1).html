@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!--
+  Portfólio pessoal
+  Autor: Lucas da Conceição
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lucas da Conceição | Desenvolvedor full stack</title>
+  <meta name="author" content="Lucas da Conceição">
+  <meta name="description" content="Portfólio de Lucas da Conceição, desenvolvedor full stack em formação. Projetos com React, Node.js e Supabase, e uma sala de aula 3D para jogar.">
+  <meta name="theme-color" content="#0b1026">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lucas da Conceição | Desenvolvedor full stack">
+  <meta property="og:description" content="Projetos com React, Node.js e Supabase, e uma sala de aula 3D para jogar.">
+  <meta property="og:locale" content="pt_BR">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#projetos">Ir para os projetos</a>
+
+  <!-- Cenário: sala de aula ao entardecer, olhando pela janela -->
+  <div class="scene" aria-hidden="true">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#070b22"/>
+          <stop offset="0.45" stop-color="#1a2158"/>
+          <stop offset="0.78" stop-color="#7a4f98"/>
+          <stop offset="1" stop-color="#f0a0ae"/>
+        </linearGradient>
+        <radialGradient id="glow">
+          <stop offset="0" stop-color="#fff3c4" stop-opacity="0.5"/>
+          <stop offset="1" stop-color="#fff3c4" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <rect x="-100" y="-50" width="1800" height="1000" fill="url(#sky)"/>
+      <g id="stars"></g>
+      <circle cx="1250" cy="220" r="240" fill="url(#glow)"/>
+      <circle cx="1250" cy="220" r="64" fill="#fff3c4"/>
+
+      <g class="l-far">
+        <path fill="#232a66" opacity="0.85" d="M-100 900 L-100 690 L20 690 L20 640 L110 640 L110 700 L190 700 L190 610 L260 610 L260 690 L360 690 L360 650 L450 650 L450 720 L540 720 L540 670 L640 670 L640 730 L760 730 L760 700 L1480 700 L1480 640 L1560 640 L1560 690 L1700 690 L1700 900 Z"/>
+      </g>
+
+      <g class="l-mid">
+        <rect x="800" y="545" width="600" height="18" fill="#0a0e2b"/>
+        <rect x="820" y="563" width="560" height="340" fill="#0f1438"/>
+        <rect x="1060" y="430" width="80" height="140" fill="#0f1438"/>
+        <polygon points="1050,432 1100,380 1150,432" fill="#0f1438"/>
+        <circle cx="1100" cy="468" r="16" fill="#ffe9a8"/>
+        <g id="windows"></g>
+      </g>
+
+      <g class="l-near">
+        <path fill="#070a1c" d="M-100 900 L-100 820 C200 770 400 830 700 800 S1200 770 1700 820 L1700 900 Z"/>
+        <path d="M-60 110 C200 170 380 80 660 180" fill="none" stroke="#1a0f2a" stroke-width="12" stroke-linecap="round"/>
+        <path d="M300 130 C340 90 380 70 420 20" fill="none" stroke="#1a0f2a" stroke-width="7" stroke-linecap="round"/>
+        <g fill="#ffb3c9" opacity="0.9">
+          <circle cx="90" cy="150" r="26"/><circle cx="140" cy="160" r="20"/><circle cx="60" cy="110" r="18"/>
+          <circle cx="230" cy="150" r="24"/><circle cx="290" cy="140" r="30"/><circle cx="350" cy="110" r="22"/>
+          <circle cx="410" cy="40" r="26"/><circle cx="440" cy="75" r="18"/><circle cx="470" cy="140" r="26"/>
+          <circle cx="540" cy="150" r="22"/><circle cx="610" cy="175" r="28"/><circle cx="660" cy="200" r="18"/>
+        </g>
+        <g fill="#ff8fb1" opacity="0.85">
+          <circle cx="120" cy="120" r="12"/><circle cx="260" cy="170" r="12"/><circle cx="330" cy="90" r="10"/>
+          <circle cx="430" cy="100" r="12"/><circle cx="510" cy="120" r="10"/><circle cx="580" cy="205" r="12"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <canvas class="petals" id="petals" aria-hidden="true"></canvas>
+
+  <header class="top">
+    <a class="mark" href="#inicio" aria-label="Início">LC</a>
+    <nav aria-label="Principal">
+      <a href="#projetos">Projetos</a>
+      <a href="#sala">Sala 3D</a>
+      <a href="#cadastro">Cadastro</a>
+      <a href="#tecnologias">Tecnologias</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div class="hero-texto">
+        <h1 data-split>Lucas da Conceição</h1>
+        <p class="lead">
+          Desenvolvedor full stack em formação. Construo plataformas web e apps mobile,
+          e coloco no ar o que aprendo.
+        </p>
+        <p class="hero-links">
+          <a class="btn" href="#projetos">Ver projetos</a>
+          <a class="btn ghost" href="#sala">Jogar na sala 3D</a>
+          <a class="btn ghost" data-link="linkedin" href="#contato" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn ghost" data-link="github" href="#contato" target="_blank" rel="noopener">GitHub</a>
+        </p>
+        </div>
+        <figure class="retrato">
+          <img src="foto.jpg" width="800" height="800" alt="Foto de Lucas da Conceição" decoding="async" fetchpriority="high">
+        </figure>
+      </div>
+
+      <svg class="desks" aria-hidden="true" preserveAspectRatio="none">
+        <defs>
+          <pattern id="desk" width="220" height="110" patternUnits="userSpaceOnUse">
+            <rect x="10" y="28" width="10" height="48"/>
+            <rect x="10" y="70" width="46" height="8"/>
+            <rect x="14" y="78" width="5" height="32"/>
+            <rect x="48" y="78" width="5" height="32"/>
+            <rect x="70" y="55" width="124" height="8" rx="2"/>
+            <rect x="80" y="63" width="6" height="47"/>
+            <rect x="178" y="63" width="6" height="47"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="110" fill="url(#desk)"/>
+      </svg>
+    </section>
+
+    <section class="block" id="projetos" aria-labelledby="h-projetos">
+      <h2 id="h-projetos">Projetos</h2>
+      <div class="content">
+
+        <details class="project" open>
+          <summary>
+            <span class="p-name">CISIA</span>
+            <span class="p-desc">Plataforma colaborativa de perguntas e respostas para estudantes</span>
+          </summary>
+          <div class="p-body">
+            <p>
+              Projeto do meu TCC, feito em equipe. A ideia nasceu de um problema comum: respostas
+              incompletas ou bloqueadas por assinatura e pouca organização por nível de ensino.
+              A CISIA reúne alunos e professores em português, com perguntas filtradas por disciplina
+              e por nível (Fundamental, Médio, Técnico e Superior).
+            </p>
+            <ul class="facts">
+              <li>Cadastro com perfil de aluno ou professor e login por e-mail e senha</li>
+              <li>Respostas em tempo real, mensagens diretas entre perfis e painel de moderação</li>
+              <li>Gamificação com sequências de dias, medalhas e reações nas publicações</li>
+              <li>Assistente de IA integrado, usando a API da Anthropic</li>
+              <li>Backend com Supabase: Postgres, Auth, Realtime e Storage</li>
+            </ul>
+            <p class="p-links">
+              <a data-link="cisiaDemo" href="#contato" target="_blank" rel="noopener">Abrir o site</a>
+              <a data-link="cisiaCode" href="#contato" target="_blank" rel="noopener">Ver o código</a>
+            </p>
+          </div>
+        </details>
+
+        <details class="project">
+          <summary>
+            <span class="p-name">Este portfólio</span>
+            <span class="p-desc">Site estático com cenário animado, jogo em 3D e cadastro, publicado na Vercel</span>
+          </summary>
+          <div class="p-body">
+            <p>
+              HTML, CSS e JavaScript, com Three.js na sala 3D. Funciona no celular, tem navegação
+              por teclado e respeita a preferência de movimento reduzido. Cada commit no GitHub
+              gera um novo deploy automaticamente.
+            </p>
+            <p class="p-links">
+              <a data-link="portfolioCode" href="#contato" target="_blank" rel="noopener">Ver o código</a>
+            </p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section class="block" id="sala" aria-labelledby="h-sala">
+      <h2 id="h-sala">Sala de aula 3D</h2>
+      <div class="content wide">
+        <p>
+          Arraste para girar a sala. Uma carteira brilha em rosa: clique nela para ganhar 10 pontos.
+          Quanto mais pontos, melhor a sua classe, da D até a A.
+        </p>
+        <div id="stage" class="stage" tabindex="0" role="group"
+             aria-label="Sala de aula em 3D. Arraste para girar e clique na carteira que brilha. No teclado, use as setas para girar e Enter para pontuar."></div>
+        <div class="hud">
+          <p class="hud-item">Pontos <strong id="pts">0</strong></p>
+          <p class="hud-item">Classe <strong id="cls">D</strong></p>
+          <button class="btn ghost small" id="reiniciar" type="button">Reiniciar</button>
+          <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="cadastro" aria-labelledby="h-cadastro">
+      <h2 id="h-cadastro">Cadastro</h2>
+      <div class="content">
+        <p>
+          Deixe seu nome e e-mail para receber o seu cartão de aluno. Não precisa criar senha nem conta.
+        </p>
+
+        <form id="form" class="form" novalidate>
+          <label>Seu nome
+            <input type="text" name="nome" autocomplete="name" maxlength="80" required>
+          </label>
+          <label>E-mail
+            <input type="email" name="email" autocomplete="email" maxlength="120" required>
+          </label>
+          <label>Em qual classe você se vê?
+            <select name="classe" required>
+              <option value="A">Classe A</option>
+              <option value="B">Classe B</option>
+              <option value="C">Classe C</option>
+              <option value="D">Classe D</option>
+            </select>
+          </label>
+          <label>Recado (opcional)
+            <textarea name="mensagem" rows="3" maxlength="400"></textarea>
+          </label>
+          <label class="hp" aria-hidden="true">Não preencha
+            <input type="text" name="site" tabindex="-1" autocomplete="off">
+          </label>
+          <label class="check">
+            <input type="checkbox" name="aceite" required>
+            <span>Aceito que meu nome e e-mail sejam usados só para contato sobre este portfólio.</span>
+          </label>
+          <button class="btn" type="submit" id="enviar">Fazer cadastro</button>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="card-aluno" id="cartao" hidden>
+          <p class="card-topo">Cartão de aluno</p>
+          <p class="card-nome" id="card-nome"></p>
+          <p class="card-linha">Classe <strong id="card-classe"></strong></p>
+          <p class="card-linha">Matrícula <strong id="card-mat"></strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="tecnologias" aria-labelledby="h-tec">
+      <h2 id="h-tec">Tecnologias</h2>
+      <div class="content">
+        <dl class="stack">
+          <div>
+            <dt>Front-end</dt>
+            <dd>HTML, CSS, JavaScript, React, React Native com Expo, Three.js</dd>
+          </div>
+          <div>
+            <dt>Back-end</dt>
+            <dd>Node.js com Express, WebSocket, Java EE (Jakarta EE) com Maven, autenticação com bcrypt</dd>
+          </div>
+          <div>
+            <dt>Dados</dt>
+            <dd>Supabase (Postgres, Auth, Realtime, Storage), MySQL</dd>
+          </div>
+          <div>
+            <dt>Inteligência artificial</dt>
+            <dd>Integração com a API da Anthropic em assistentes dentro de aplicações web</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="block" id="trajetoria" aria-labelledby="h-traj">
+      <h2 id="h-traj">Trajetória</h2>
+      <div class="content prose">
+        <p>
+          Estudo Desenvolvimento de Sistemas e ainda não tenho experiência profissional na área.
+          Por isso, aprendo construindo: cada projeto aqui nasceu de uma necessidade real
+          e foi do protótipo ao ar, passando por bugs, refatorações e migração de arquitetura.
+        </p>
+        <p>
+          Na CISIA, por exemplo, comecei com um servidor Node.js e terminei com uma aplicação
+          totalmente apoiada no Supabase, sem servidor próprio para manter. Foi a decisão que mais
+          me ensinou sobre custo, simplicidade e o que realmente precisa existir num backend.
+        </p>
+        <p>Estou em busca da primeira oportunidade como desenvolvedor júnior ou estagiário.</p>
+      </div>
+    </section>
+
+    <section class="block" id="contato" aria-labelledby="h-contato">
+      <h2 id="h-contato">Contato</h2>
+      <div class="content">
+        <p class="big">Vamos conversar sobre projetos, vagas ou ideias.</p>
+        <ul class="contact">
+          <li><a data-link="email" href="#contato">lcs586540@gmail.com</a></li>
+          <li><a data-link="telefone" href="#contato">(14) 98219-8970</a></li>
+          <li><a data-link="linkedin" href="#contato" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a data-link="github" href="#contato" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>&copy; <span id="ano">2026</span> Lucas da Conceição. Cenário e ilustrações originais.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
